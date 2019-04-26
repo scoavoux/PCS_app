@@ -1,0 +1,12 @@
+nomvar;descriptif;champ
+ident;Identifiants;Toutes personnes interrogées
+filtre;Variable filtre;Toutes personnes interrogées
+gsp_tous;Groupe socioprofessionnel;Toutes personnes interrogées (chômeurs reclassés dans leur CS antérieure, retraités reclassés dans leur GSP antérieur)
+csi_tous;Catégorie sociale intermédiaire;Toutes personnes interrogées (chômeurs reclassés dans leur CS antérieure, retraités reclassés dans leur GSP antérieur)
+csd_tous;Catégorie sociale détaillée;Toutes personnes interrogées (chômeurs reclassés dans leur CS antérieure, retraités reclassés dans leur GSP antérieur)
+statut_emploi;Statut de l'emploi occupé;Toutes personnes interrogées
+statut_activite;Statut d'activité;Toutes personnes interrogées
+age;Age numérique;Toutes personnes interrogées
+age_dec;Age en décennies;Toutes personnes interrogées
+sex;Sexe de la personne interrogée;Toutes personnes interrogées
+diplome;Plus haut niveau de diplôme atteint;Toutes personnes interrogées

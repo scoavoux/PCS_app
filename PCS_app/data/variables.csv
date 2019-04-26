@@ -1,0 +1,6 @@
+theme,variable,dataset,description
+sociodemo,age,eec,
+sociodemo,age_dec,eec,
+sociodemo,sex,eec,
+emploi,diplome,eec,
+emploi,statut,eec,
