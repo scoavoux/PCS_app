@@ -13,7 +13,8 @@ names(d) <- datasets$dataset
 d$eec <- rename(d$eec, 
                 gsp = "gsp_tous",
                 csi = "csi_tous",
-                csd = "csd_tous")
+                csd = "csd_tous",
+                statut = "statut_emploi")
 
 d <- map(d, function(df){
   mutate(df, gsp = factor(gsp, levels = c("Agriculteurs exploitants",
@@ -28,7 +29,9 @@ d <- map(d, function(df){
 
 ## Fonction créant les tableaux
 tab <- function(df, var, pcs){
-  df <- filter(df, !is.na(!! sym(pcs)))
+  df <- filter(df, 
+               !is.na(!! sym(pcs)),
+               !is.na(!! sym(var)))
   
   if(is.character(df[[var]])) {
     tb <- tabyl(df, !! sym(pcs), !! sym(var)) %>% 
@@ -59,13 +62,19 @@ theme_set(theme_bw())
 
 graph <- function(df, var, pcs){
   
-  df <- filter(df, !is.na(!! sym(pcs)))
+  df <- filter(df, 
+               !is.na(!! sym(pcs)),
+               !is.na(!! sym(var)))
   
   if(is.character(df[[var]])) {
-    gr <- ggplot(df, aes(x = !! sym(pcs), 
-                         y = (..count..)/sum(..count..),
-                         fill = !! sym(var))) +
-      geom_bar(position = "dodge") +
+    gr <- df %>% 
+      count(!! sym(var), !! sym(pcs)) %>% 
+      group_by(!! sym(pcs)) %>% 
+      mutate(f = n / sum(n)) %>% 
+      ggplot(aes(x = !! sym(pcs),
+                 y = f,
+                 fill = !! sym(var))) +
+      geom_bar(position = "dodge", stat = "identity") +
       coord_flip()
   }
   else if(is.numeric(df[[var]])) {
